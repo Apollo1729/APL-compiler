@@ -1,0 +1,55 @@
+# Node
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Vite cache
+.vite/
+
+# Webpack cache
+.cache/
+webpack-stats.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Mac / Linux
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Optional: If using Volar + Take Over Mode
+volar.config.js
+
+# Optional: if using test tools like Cypress or Playwright
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+
+# Optional: if using local SQLite/db files
+*.sqlite
+*.db
