@@ -1,0 +1,212 @@
+{
+  "language": "Custom PLY-based Programming Language",
+  "start_rule": "program",
+  "rules": {
+    "program": {
+      "syntax": [
+        "'begin' statement_list 'end'",
+        "statement_list"
+      ],
+      "description": "A program starts with 'begin' and ends with 'end' or consists of just a statement list."
+    },
+    "statement_list": {
+      "syntax": [
+        "statement statement_list",
+        "control_statement statement_list",
+        "empty"
+      ],
+      "description": "A sequence of one or more statements."
+    },
+    "statement": {
+      "syntax": [
+        "assignment_statement",
+        "expression ';'",
+        "print_statement",
+        "natural_language",
+        "return_statement",
+        "break_statement",
+        "continue_statement",
+        "function_definition"
+      ],
+      "description": "A general statement that may be an assignment, expression, control flow, or a function definition."
+    },
+    "assignment_statement": {
+      "syntax": [
+        "declaration",
+        "IDENTIFIER '=' expression ';'"
+      ],
+      "description": "Assigns a value to a variable or declares a variable with 'let'."
+    },
+    "declaration": {
+      "syntax": "'let' IDENTIFIER '=' expression ';'",
+      "description": "Declares and initializes a variable."
+    },
+    "expression": {
+      "syntax": [
+        "expression '+' term",
+        "expression '-' term",
+        "term"
+      ],
+      "description": "Arithmetic expression handling addition and subtraction."
+    },
+    "term": {
+      "syntax": [
+        "term '*' factor",
+        "term '/' factor",
+        "factor",
+        "function_call"
+      ],
+      "description": "Arithmetic expression handling multiplication, division, and function calls."
+    },
+    "factor": {
+      "syntax": [
+        "INTEGER",
+        "FLOAT",
+        "STRING",
+        "IDENTIFIER",
+        "'true'",
+        "'false'",
+        "'(' expression ')'",
+        "'+' factor",
+        "'-' factor"
+      ],
+      "description": "Basic expression values, including literals, identifiers, and grouped expressions."
+    },
+    "control_statement": {
+      "syntax": [
+        "if_statement",
+        "for_statement",
+        "while_statement",
+        "function_call ';'"
+      ],
+      "description": "Control flow constructs including if, for, while, and function calls as standalone statements."
+    },
+    "if_statement": {
+      "syntax": "'if' condition block else_part",
+      "description": "An if-then construct with optional else or elseif chains."
+    },
+    "else_part": {
+      "syntax": [
+        "'else' block",
+        "'elseif' condition block else_part",
+        "empty"
+      ],
+      "description": "Handles 'else' and 'elseif' chaining."
+    },
+    "for_statement": {
+      "syntax": [
+        "'for' IDENTIFIER '=' expression 'to' expression block",
+        "'for' IDENTIFIER '=' expression 'to' expression 'step' expression block",
+        "'for' declaration 'to' expression 'step' expression block",
+        "'for' declaration 'to' expression block"
+      ],
+      "description": "For loop supporting optional step value and variable declaration."
+    },
+    "while_statement": {
+      "syntax": "'while' condition block",
+      "description": "Repeats a block while a condition is true."
+    },
+    "block": {
+      "syntax": [
+        "'begin' statement_list 'end'",
+        "statement"
+      ],
+      "description": "A grouped code block or a single statement."
+    },
+    "condition": {
+      "syntax": [
+        "expression '<' expression",
+        "expression '>' expression",
+        "expression '<=' expression",
+        "expression '>=' expression",
+        "expression '==' expression",
+        "expression '!=' expression",
+        "condition 'and' condition",
+        "condition 'or' condition",
+        "'not' condition",
+        "expression",
+        "'(' condition ')'"
+      ],
+      "description": "Conditional logic used in control flow, supports logical and comparison operations."
+    },
+    "natural_language": {
+      "syntax": [
+  "SET_KEYWORD_NATURAL_LANG IDENTIFIER KEYWORD_TO expression SEMICOLON",
+  "ADD_KEYWORD_NATURAL_LANG expression KEYWORD_TO IDENTIFIER SEMICOLON",
+  "SUB_KEYWORD_NATURAL_LANG expression FROM_KEYWORD_NATURAL_LANG IDENTIFIER SEMICOLON",
+  "MULT_KEYWORD_NATURAL_LANG IDENTIFIER BY_KEYWORD_NATURAL_LANG expression SEMICOLON",
+  "DIV_KEYWORD_NATURAL_LANG IDENTIFIER BY_KEYWORD_NATURAL_LANG expression SEMICOLON",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG LT_OP expression THEN_KEYWORD_NATURAL_LANG statement",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG GT_OP expression THEN_KEYWORD_NATURAL_LANG statement",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG LE_OP expression THEN_KEYWORD_NATURAL_LANG statement",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG GE_OP expression THEN_KEYWORD_NATURAL_LANG statement",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG EQ_OP expression THEN_KEYWORD_NATURAL_LANG statement",
+  "KEYWORD_IF IDENTIFIER IS_KEYWORD_NATURAL_LANG NE_OP expression THEN_KEYWORD_NATURAL_LANG statement"
+  ],
+    "description": "Natural language syntax for common operations and conditionals."
+    },
+    "function_call": {
+      "syntax": "IDENTIFIER '(' parameter_list ')'",
+      "description": "Function call using an identifier and a list of arguments."
+    },
+    "parameter_list": {
+      "syntax": [
+        "expression ',' parameter_list",
+        "expression",
+        "empty"
+      ],
+      "description": "Comma-separated arguments passed to a function."
+    },
+    "print_statement": {
+      "syntax": "'print' '(' print_arguments ')' ';'",
+      "description": "Outputs text or the value of an expression."
+    },
+    "print_arguments": {
+      "syntax": [
+        "printable_item ',' print_arguments",
+        "printable_item"
+      ],
+      "description": "Arguments accepted by a print statement."
+    },
+    "printable_item": {
+      "syntax": [
+        "STRING",
+        "expression"
+      ],
+      "description": "Items that can be printed — either string literals or expressions."
+    },
+    "function_definition": {
+      "syntax": [
+        "'function' IDENTIFIER '(' parameter_declaration_list ')' block",
+        "'function' IDENTIFIER '(' ')' block"
+      ],
+      "description": "Defines a function with optional parameters and a code block."
+    },
+    "parameter_declaration_list": {
+      "syntax": [
+        "IDENTIFIER ',' parameter_declaration_list",
+        "IDENTIFIER"
+      ],
+      "description": "Comma-separated list of identifiers for function parameters."
+    },
+    "return_statement": {
+      "syntax": [
+        "'return' expression ';'",
+        "'return' ';'"
+      ],
+      "description": "Returns a value or exits a function early."
+    },
+    "break_statement": {
+      "syntax": "'break' ';'",
+      "description": "Exits the nearest loop immediately."
+    },
+    "continue_statement": {
+      "syntax": "'continue' ';'",
+      "description": "Skips to the next iteration of the nearest loop."
+    }
+  },
+  "utility": {
+    "empty": "Used for optional or repeating grammar constructs (ε).",
+    "error": "Handles syntax errors gracefully with helpful diagnostics."
+  }
+}
